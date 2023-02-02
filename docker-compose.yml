@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  db:
+    container_name: mysql_server_durak
+    image: mysql
+    environment:
+      - USERNAME=root
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=durak
+    ports:
+      - 3306:3306
