@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
-@tailwind utilities;4
+@tailwind utilities;
+
+@font-face {
+    font-family: almond_butter;
+    src: url('../public/assets/fonts/AlmondButter.ttf');
+}
+
+@layer components {
+    * {
+        box-sizing: border-box;
+    }
+    body {
+        @apply bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-sky-400 to-blue-500;        
+    }
+    #root {
+        @apply h-[100vh];
+        @apply w-[100vw];
+        @apply grid;
+    }
+    .almond_butter_font {
+        font-family: almond_butter;
+    }
+}
