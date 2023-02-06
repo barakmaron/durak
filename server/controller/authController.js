@@ -32,11 +32,14 @@ const Logout = async (req, res, next) => {
 }
 
 function CheckToken(req, res, next) {
-    return res.sendStatus(StatusCode.SuccessOK);
+    return res.status(StatusCode.SuccessOK).json({
+        user_name: req.user_name,
+        id: req.user_id
+    });
 }
 
 function CreateAccessToken(res, user) {
-    const access_token = AuthService.GenerateToken(user);
+    const access_token = AuthService.GenerateToken(user.id, user.UserName);
     return res.cookie('jwt', access_token, {
         httpOnly: true,
         secure: true

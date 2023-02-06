@@ -7,7 +7,8 @@ export default function AuthenticateToken(req, res, next) {
         if(!token)
             return res.sendStatus(StatusCode.ClientErrorUnauthorized);
         const user_id = jwt.verify(token, process.env.ACCESS_TOKEN);
-        req.user_id = user_id;
+        req.user_id = user_id.id;
+        req.user_name = user_id.user_name;
         next();
     } catch (err) {
         return res.sendStatus(StatusCode.ClientErrorForbidden);
