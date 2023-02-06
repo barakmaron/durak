@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Loader = () => {
-  return (<div className='w-full h-full flex items-center justify-center gap-2 mx-auto absolute top-0 left-0 bg-sky-300'>    
+  return (<div className='w-[100vw] h-[100vh] flex items-center justify-center gap-2 mx-auto absolute top-0 left-0 bg-sky-300 z-50'>    
     <div className="flex space-x-2">
         <span className='almond_butter_font text-4xl'>Loading</span>        
         <LoaderDot color='bg-green-500' animation='animate-bounce' delay={1}/>

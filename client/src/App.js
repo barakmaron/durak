@@ -1,10 +1,22 @@
 import React, { Suspense } from 'react';
-import  { Routes, Route } from 'react-router-dom';
+import  { Routes, Route, useNavigate } from 'react-router-dom';
 import Helmet from 'react-helmet';
 import routes from './routes';
 import Loader from './components/Loader/Loader';
+import ApiHandlerConnector from './components/ApiHandler/ApiHandlerConnector';
+import { useEffect } from 'react';
+import ProtectedRouteConnector from './components/ProtectedRoute/ProtectedRouteConnector';
 
-function App() {
+function App({
+  user_name
+}) {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if(user_name) 
+      navigate('/rooms');
+  }, [user_name, navigate]);
+
   return (<>
     <Routes>
       {routes.map((route) => {
@@ -12,6 +24,7 @@ function App() {
             <Route
             path={route.location}
             element={<>
+              { route?.protected && <ProtectedRouteConnector /> }
               <Helmet>
                 <title>{route.title}</title>
               </Helmet>
@@ -22,6 +35,7 @@ function App() {
         </React.Fragment>;
       })}
     </Routes>
+    <ApiHandlerConnector />
   </>);
 }
 
